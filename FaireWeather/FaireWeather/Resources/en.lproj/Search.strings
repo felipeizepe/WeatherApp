@@ -1,0 +1,13 @@
+/* 
+  Search.strings
+  FaireWeather
+
+  Created by Felipe Izepe on 11/12/21.
+  
+*/
+
+"search" = "Search";
+"searchLocation" = "Search for Location";
+"searchWeather" = "Search for Weather at a location";
+"lattitude" = "Lattitude";
+"longitude" = "Longitude";

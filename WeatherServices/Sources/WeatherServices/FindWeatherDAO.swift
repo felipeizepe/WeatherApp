@@ -10,7 +10,7 @@ import RequestCommons
 
 public protocol FindWeatherServiceProtocol {
 
-    func findWeather(locationId: Int, completion: ((Result<[WeatherReport], NetworkError>) -> Void)?)
+    func findWeather(locationId: Int, completion: ((Result<WeatherReport, NetworkError>) -> Void)?)
     func findLocationId(lattitude: Double, longitude: Double, completion: ((Result<[Location], NetworkError>) -> Void)?)
 }
 
@@ -23,7 +23,7 @@ class FindWeatherDAO: FindWeatherServiceProtocol {
         self.core = networkCore
     }
 
-    public func findWeather(locationId: Int, completion: ((Result<[WeatherReport], NetworkError>) -> Void)?) {
+    public func findWeather(locationId: Int, completion: ((Result<WeatherReport, NetworkError>) -> Void)?) {
         let completeUrl = baseUrl + "\(locationId)/"
         guard let url = URL(string: completeUrl) else {
             let error: NetworkError = NetworkError(status: .incorrectPath, error: nil, data: nil)
@@ -35,13 +35,13 @@ class FindWeatherDAO: FindWeatherServiceProtocol {
         core.performRequest(request) { response in
             switch response {
             case .success(let data):
-                guard let reportArrayDTO: WeatherReportArrayDTO = try? JSONDecoder().decode(WeatherReportArrayDTO.self, from: data) else {
+                guard let reportDTO: WeatherReportDTO = try? JSONDecoder().decode(WeatherReportDTO.self, from: data) else {
                     let error: NetworkError = NetworkError(status: .parseError, error: nil, data: data)
                     completion?(Result.failure(error))
                     return
                 }
-                let reports: [WeatherReport] = reportArrayDTO.consolidatedWeather.map { WeatherReport(weatherDTO: $0) }
-                completion?(.success(reports))
+                let report: WeatherReport = WeatherReport(weatherDTO: reportDTO)
+                completion?(.success(report))
             case .error(let responseStatus, let error, let data):
                 let error: NetworkError = NetworkError(status: responseStatus, error: error, data: data)
                 completion?(Result.failure(error))

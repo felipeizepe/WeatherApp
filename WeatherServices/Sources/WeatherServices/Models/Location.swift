@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Location {
+public class Location: Identifiable {
 
     public private(set) var id: String
     public private(set) var name: String

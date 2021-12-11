@@ -1,0 +1,12 @@
+/* 
+  Errors.strings
+  FaireWeather
+
+  Created by Felipe Izepe on 11/12/21.
+  
+*/
+
+"invalidValue" = "Invalid Value";
+"invalidLattitude" = " Invalid Lattitude";
+"invalidLongitude" = " Invalid Longitude";
+"invalidId" = " Invalid Id";

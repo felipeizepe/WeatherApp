@@ -14,24 +14,26 @@ public protocol CollorPallet {
     var secondary: Color { get }
     var tertiary: Color { get }
     var background: Color { get }
+    var schemeType: ColorScheme { get }
 }
 
 class LightPallet: CollorPallet {
 
     var palletCode: Int { 0 }
     var primary: Color { .black }
-    var secondary: Color { Color.cyan }
-    var tertiary: Color { Color.yellow }
-    var background: Color { Color.white }
+    var secondary: Color { .green }
+    var tertiary: Color { .yellow }
+    var background: Color { .white }
+    var schemeType: ColorScheme { .light }
 
 }
 
 class DarkPallet: CollorPallet {
 
     var palletCode: Int { 1 }
-    var primary: Color { Color.white }
-    var secondary: Color { Color.blue }
-    var tertiary: Color { Color.yellow }
-    var background: Color { Color.black }
-
+    var primary: Color { .white }
+    var secondary: Color { .blue }
+    var tertiary: Color { .yellow }
+    var background: Color { .black }
+    var schemeType: ColorScheme { .dark }
 }
