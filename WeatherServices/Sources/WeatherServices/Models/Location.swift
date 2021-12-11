@@ -9,11 +9,11 @@ import Foundation
 
 public class Location: Identifiable {
 
-    public private(set) var id: String
+    public private(set) var id: Int
     public private(set) var name: String
 
     init(locationDTO: LocationDTO) {
-        self.id = "\(locationDTO.woeid)"
+        self.id = locationDTO.woeid
         self.name = locationDTO.title
     }
 }
