@@ -44,6 +44,8 @@
 		6A4196DF2764094A001DA224 /* FaireWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaireWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A4196E32764094A001DA224 /* FaireWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaireWeatherUITests.swift; sourceTree = "<group>"; };
 		6A4196E52764094A001DA224 /* FaireWeatherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaireWeatherUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6AB7C2052765356E00E18C04 /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DesignSystem; path = ../DesignSystem; sourceTree = "<group>"; };
+		6AB7C2062765357E00E18C04 /* WeatherServices */ = {isa = PBXFileReference; lastKnownFileType = folder; name = WeatherServices; path = ../WeatherServices; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		6A4196BC27640948001DA224 = {
 			isa = PBXGroup;
 			children = (
+				6AB7C2042765356E00E18C04 /* Packages */,
 				6A4196C727640948001DA224 /* FaireWeather */,
 				6A4196D82764094A001DA224 /* FaireWeatherTests */,
 				6A4196E22764094A001DA224 /* FaireWeatherUITests */,
@@ -125,6 +128,15 @@
 				6A4196E52764094A001DA224 /* FaireWeatherUITestsLaunchTests.swift */,
 			);
 			path = FaireWeatherUITests;
+			sourceTree = "<group>";
+		};
+		6AB7C2042765356E00E18C04 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				6AB7C2052765356E00E18C04 /* DesignSystem */,
+				6AB7C2062765357E00E18C04 /* WeatherServices */,
+			);
+			name = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
