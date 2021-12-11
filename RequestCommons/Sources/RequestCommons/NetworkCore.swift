@@ -15,6 +15,8 @@ public protocol NetworkCoreProtocol {
 
 public class NetworkCore: NetworkCoreProtocol {
 
+    public init() { }
+
     public func performRequest(_ request: NetworkRequest, completion: @escaping (Response) -> Void) {
         AF.request(request.url.absoluteString,method: request.method)
             .validate(statusCode: 200..<300)

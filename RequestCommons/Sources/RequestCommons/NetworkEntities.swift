@@ -12,6 +12,12 @@ public struct NetworkRequest {
 
     var url: URL
     var method: HTTPMethod
+
+    public init(url: URL,
+                method: HTTPMethod) {
+        self.url = url
+        self.method = method
+    }
 }
 
 public enum Response {
@@ -54,6 +60,7 @@ public enum ResponseStatus {
     case internalServerError
     case unkown
     case noData
+    case incorrectPath
 
     static func statusFor(statusCode: Int) -> ResponseStatus {
         switch statusCode {
