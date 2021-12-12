@@ -18,6 +18,26 @@ class ReportViewModel: ObservableObject {
     private let service: FindWeatherServiceProtocol
     private let locationId: Int
 
+    var minValue: String {
+        if let temp = report?.measurements.first?.minTemp {
+            return "\(temp)º"
+        } else {
+            return "-"
+        }
+    }
+
+    var maxValue: String {
+        if let temp = report?.measurements.first?.maxTemp {
+            return "\(temp)º"
+        } else {
+            return "-"
+        }
+    }
+
+    var imageName: String {
+        report?.measurements.first?.imageName ?? ""
+    }
+
     init(locationId: Int,
          service: FindWeatherServiceProtocol = WeatherServiceFactory.shared.findWeatherService) {
         self.service = service
@@ -25,11 +45,13 @@ class ReportViewModel: ObservableObject {
     }
 
     func searchWeather() {
+        print("Request")
         service.findWeather(locationId: locationId) { [weak self] result in
             switch result {
             case .success(let report):
                 self?.report = report
             case.failure(let networkError):
+                print(networkError)
                 self?.error = networkError
             }
         }

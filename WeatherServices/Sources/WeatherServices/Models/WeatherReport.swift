@@ -24,14 +24,30 @@ public class WeatherReport: Identifiable {
 public class WeatherMeasurement: Identifiable {
 
     public private(set) var id: String
-    public private(set) var state: String
+    public private(set) var state: WeatherType
+    public private(set) var imageName: String
     public private(set) var minTemp: String
     public private(set) var maxTemp: String
 
     init(measurementDTO: WeatherMeasurementDTO) {
         self.id = "\(measurementDTO.id)"
-        self.state = measurementDTO.weatherStateName
-        self.minTemp = measurementDTO.minTemp
-        self.maxTemp = measurementDTO.maxTemp
+        self.state = WeatherType(rawValue: measurementDTO.weatherStateName) ?? .clear
+        self.minTemp = "\(measurementDTO.minTemp)"
+        self.maxTemp = "\(measurementDTO.maxTemp)"
+        self.imageName = measurementDTO.weatherStateAbbr
     }
+}
+
+public enum WeatherType: String {
+
+    case snow = "Snow"
+    case sleet = "Sleet"
+    case hail = "Hail"
+    case thunderstorm = "Thunderstorm"
+    case heavyRain = "Heavy Rain"
+    case lightRain = "Light Rain"
+    case showers = "Showers"
+    case heavyCloud = "Heavy Cloud"
+    case lightCloud = "Light Cloud"
+    case clear = "Clear"
 }

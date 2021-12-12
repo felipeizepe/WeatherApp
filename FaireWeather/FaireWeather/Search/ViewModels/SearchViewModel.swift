@@ -19,6 +19,8 @@ class SearchViewModel: ObservableObject {
     private let service: FindWeatherServiceProtocol
     private var selectedPalletIndex: Int = 0
 
+    private(set) var isLoading: Bool = false
+
     var searchText: String {
         SearchTable.search.textValue()
     }
@@ -54,9 +56,10 @@ class SearchViewModel: ObservableObject {
             errorMessage = UIError(type: .invalidLongitude).message
             return
         }
-
+        isLoading = true
         self.errorMessage = nil
         service.findLocationId(lattitude: lattitude, longitude: longitude) { [weak self] result in
+            self?.isLoading = false
             switch result {
             case .success(let locations):
                 self?.locations = locations

@@ -47,7 +47,9 @@ struct SearchView: View {
                     }
                     .border(viewModel.selectdPallet.secondary)
                     .overlay(Group {
-                        if viewModel.locations.isEmpty && viewModel.errorMessage == nil {
+                        if viewModel.isLoading {
+                            Text("Loading...")
+                        } else if viewModel.locations.isEmpty && viewModel.errorMessage == nil {
                             Text("Please search for a location.")
                         } else if let error = viewModel.errorMessage {
                             Text(error)
