@@ -55,7 +55,6 @@ struct SearchView: View {
                             Text(error)
                         }
                     })
-                    
                     Spacer()
                 }
                 .padding()

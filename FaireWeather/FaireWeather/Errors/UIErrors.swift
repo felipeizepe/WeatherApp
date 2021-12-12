@@ -16,7 +16,7 @@ public class UIError: Error {
     }
 }
 
-public enum UIErrorType{
+public enum UIErrorType {
 
     case invalidLattitude
     case invalidLongitude
