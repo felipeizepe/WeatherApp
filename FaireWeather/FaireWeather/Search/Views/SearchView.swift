@@ -35,14 +35,15 @@ struct SearchView: View {
                     .padding(.bottom, 8)
 
                     Text("Location").font(.system(size: 21))
-                    List {
-                        ForEach(viewModel.locations) { item in
-                            HStack {
-                                Text(item.name)
-                                Text(" - ")
-                                Text("\(item.id)")
-                            }
-                        }
+                    List(viewModel.locations) { item in
+                        NavigationLink(
+                            destination: ReportView(viewModel: ReportViewModel(locationId: item.id))) {
+                                HStack {
+                                    Text(item.name)
+                                    Text(" - ")
+                                    Text("\(item.id)")
+                                }
+                          }
                     }
                     .border(viewModel.selectdPallet.secondary)
                     .overlay(Group {
